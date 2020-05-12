@@ -2,11 +2,13 @@ package com.wipro.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
+@EnableMongoRepositories(basePackages = "com.wipro.repository")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     //Disabling security configuration for simplicity

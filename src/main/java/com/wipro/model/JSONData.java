@@ -1,13 +1,18 @@
 package com.wipro.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Arrays;
 
+@Document(collection = "IncomingJsonData")
 public class JSONData {
-    long id;
-    String findDuplicates;
-    String whiteSpacesGalore;
-    String validateMeOnlyIActuallyShouldBeABoolean;
-    int[] numbersMeetNumbers;
+    @Id
+    private long id;
+    private String findDuplicates;
+    private String whiteSpacesGalore;
+    private String validateMeOnlyIActuallyShouldBeABoolean;
+    private int[] numbersMeetNumbers;
 
     public long getId() {
         return id;
