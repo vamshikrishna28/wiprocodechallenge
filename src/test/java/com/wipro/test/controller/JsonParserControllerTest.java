@@ -2,7 +2,6 @@ package com.wipro.test.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wipro.app.JsonParserApplication;
-import com.wipro.controller.JsonParserController;
 import com.wipro.model.JSONData;
 import com.wipro.service.JsonParserService;
 import org.apache.logging.log4j.LogManager;
@@ -10,7 +9,8 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -25,8 +25,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Controller level test cases using mockito
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(JsonParserController.class)
+//@WebMvcTest(JsonParserController.class)
 @ContextConfiguration(classes = {JsonParserApplication.class})
+@SpringBootTest
+@AutoConfigureMockMvc
 public class JsonParserControllerTest {
 
     private static final Logger logger = LogManager.getLogger(JsonParserControllerTest.class);
@@ -38,7 +40,7 @@ public class JsonParserControllerTest {
     private JsonParserService jsonParserService;
 
     @Test
-    public void testGetPeopleData() throws Exception {
+    public void testValidateJSONData() throws Exception {
         JSONData jsonData = constructRequestObject();
         when(jsonParserService.validateJSONData(any())).thenReturn(true);
         mvc.perform(post("/incoming",jsonData)

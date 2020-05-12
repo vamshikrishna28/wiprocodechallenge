@@ -2,14 +2,10 @@ package com.wipro.test.service;
 
 import com.wipro.model.JSONData;
 import com.wipro.service.JsonParserService;
-
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -27,16 +23,11 @@ public class JsonParserServiceTest {
     private JsonParserService jsonParserService;
 
     //TODO: To write negative scenarios for all the cases
-   /* @Test
-    public void testJsonParseData() {
-        boolean status = jsonParserService.parseJSONData(constructRequestObject());
-        Assert.assertTrue(status);
-    }*/
-
+    //TODO: Write unit test for save operation on JSONData and MongoDbModel
     @Test
     public void testJSONValidations(){
         boolean isValid = jsonParserService.validateJSONData(constructRequestObject());
-        Assert.assertFalse(isValid);
+        Assert.assertTrue(isValid);
     }
 
     @Test
